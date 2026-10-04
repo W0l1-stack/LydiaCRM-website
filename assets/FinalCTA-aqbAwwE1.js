@@ -1,4 +1,4 @@
-import{r as c,M as x,u as h,F as e,W as b,D as m,I as d,K as l,T as w,J as j}from"./index--tQdJ3y9.js";function f({children:t,isValidProp:s,...a}){s&&b(s),a={...c.useContext(x),...a},a.isStatic=h(()=>a.isStatic);const r=c.useMemo(()=>a,[JSON.stringify(a.transition),a.transformPagePoint,a.reducedMotion]);return e.jsx(x.Provider,{value:r,children:t})}/**
+import{r as c,M as x,u as h,F as e,W as b,D as m,I as d,K as l,T as w,J as j}from"./index-zV2Mzu3Q.js";function f({children:t,isValidProp:s,...a}){s&&b(s),a={...c.useContext(x),...a},a.isStatic=h(()=>a.isStatic);const r=c.useMemo(()=>a,[JSON.stringify(a.transition),a.transformPagePoint,a.reducedMotion]);return e.jsx(x.Provider,{value:r,children:t})}/**
  * @license lucide-react v0.441.0 - ISC
  *
  * This source code is licensed under the ISC license.
