@@ -1,22 +1,130 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lydia Product Tour — See every part of the platform</title>
-    <meta name="description" content="Watch Lydia run a real small business: inbox, pipeline, campaigns, automations, AI Work, bookings, payments and agency workspaces, narrated chapter by chapter." />
-    <meta property="og:title" content="Lydia — The CRM that works while you sleep" />
-    <meta property="og:description" content="Messages, bookings, payments and follow-ups in one place. Built for small businesses." />
-    <meta property="og:image" content="./media/demo-poster.jpg" />
-    <meta name="theme-color" content="#05070d" />
-    <link rel="icon" href="./brand/favicon-64.png" type="image/png" />
-    <link rel="apple-touch-icon" href="./brand/apple-touch-icon.png" />
-    <script type="module" crossorigin src="./assets/tour-origin-20261127.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/shared-origin-20261127.js">
-    <link rel="modulepreload" crossorigin href="./assets/cta-origin-20261127.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-C4OSYHHc.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LydiaCRM Product Tour | Enquiry to invoice</title>
+    <meta
+      name="description"
+      content="Explore the LydiaCRM product tour for enquiries, quotes, recurring jobs, scheduling, invoices, the customer portal and the Automation Inspector."
+    />
+    <meta name="theme-color" content="#111744" />
+    <link rel="icon" href="./brand/favicon-64.png" />
+    <script type="module" crossorigin src="./assets/marketing-CMZJYb7F.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/marketing-TlFv3PTb.css">
   </head>
   <body>
-    <div id="root"></div>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="header">
+      <nav class="wrap nav" aria-label="Main navigation">
+        <a class="brand" href="./index.html"
+          ><img
+            src="./brand/favicon-64.png"
+            width="35"
+            height="37"
+            alt=""
+          />Lydia<span>CRM</span></a
+        >
+        <button
+          class="menu"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          Menu
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="./index.html#workflow">Workflow</a
+          ><a href="./index.html#features">Features</a
+          ><a href="./product.html" aria-current="page">Product tour</a>
+        </div>
+        <a
+          class="nav-login"
+          data-app="/login"
+          href="https://lydiacrm.duckdns.org/login"
+          >Log in</a
+        >
+      </nav>
+    </header>
+    <main id="main">
+      <section class="tour-head wrap" id="tour">
+        <p class="eyebrow"><span></span> Product tour</p>
+        <h1>One job. <em>Every step.</em></h1>
+        <p class="intro">
+          Follow a quarterly maintenance request through LydiaCRM. Select a
+          chapter or play the animated walkthrough.
+        </p>
+        <p class="caption">Illustrative screens use sample records.</p>
+      </section>
+      <section class="wrap tour-body" aria-label="Interactive product tour">
+        <div class="flow tour-flow" id="tour-chapters" data-demo="tour">
+          <div class="stage-list" aria-label="Tour chapters"></div>
+          <div class="demo-stage"></div>
+        </div>
+        <div class="tour-controls">
+          <button
+            class="btn primary"
+            type="button"
+            id="play-tour"
+            aria-controls="tour-chapters"
+          >
+            <span aria-hidden="true">▷</span> Play chapters
+          </button>
+          <p
+            id="tour-count"
+            class="caption"
+            aria-live="polite"
+            aria-atomic="true"
+          ></p>
+        </div>
+      </section>
+      <section class="section wrap video-section" id="video">
+        <div class="lead reveal">
+          <h2>Watch the workflow</h2>
+          <p>A short, text-led overview of all six chapters.</p>
+        </div>
+        <video
+          controls
+          playsinline
+          preload="none"
+          width="960"
+          height="540"
+          poster="./walkthrough/overview.webp"
+          aria-label="LydiaCRM animated product overview"
+        >
+          <source src="./walkthrough/overview.mp4" type="video/mp4" />
+        </video>
+      </section>
+      <section class="wrap closing reveal">
+        <h2>Try it with your own workflow.</h2>
+        <p>
+          Create a workspace and set up the way your team manages jobs and
+          customer follow-up.
+        </p>
+        <div class="actions">
+          <a
+            class="btn primary"
+            data-app="/register"
+            href="https://lydiacrm.duckdns.org/register"
+            >Start free trial <span class="cta-arrow" aria-hidden="true"></span
+          ></a>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap footer">
+      <a class="brand" href="./index.html"
+        ><img
+          src="./brand/favicon-64.png"
+          width="35"
+          height="37"
+          alt=""
+        />Lydia<span>CRM</span></a
+      >
+      <div>
+        <a href="./privacy.html">Privacy</a><a href="./terms.html">Terms</a
+        ><a href="./security.html">Security</a
+        ><a href="./cookies.html">Cookies</a><a href="./dpa.html">DPA</a>
+      </div>
+    </footer>
   </body>
 </html>
