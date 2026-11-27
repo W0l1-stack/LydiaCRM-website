@@ -1,0 +1,19 @@
+<svg viewBox="0 0 330 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stylized U with pen stroke (larger) -->
+  <g transform="translate(35, 50)">
+    <!-- Left curve of U -->
+    <path d="M -20 -22 Q -20 10 -5 25" stroke="#1E5FD8" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Right curve of U -->
+    <path d="M 20 -22 Q 20 10 5 25" stroke="#1E5FD8" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Bottom of U -->
+    <path d="M -5 25 Q 0 28 5 25" stroke="#1E5FD8" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Diagonal pen stroke through U -->
+    <line x1="-10" y1="-18" x2="15" y2="20" stroke="#1E5FD8" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <!-- LYDIACRMS text -->
+  <text x="95" y="45" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#1E5FD8" letter-spacing="-0.5" textLength="225" lengthAdjust="spacingAndGlyphs">LYDIACRMS</text>
+
+  <!-- Tagline -->
+  <text x="95" y="70" font-family="Arial, sans-serif" font-size="12" fill="#1E5FD8" letter-spacing="0.5" textLength="225" lengthAdjust="spacingAndGlyphs">EASY RELATIONSHIP MANAGEMENT</text>
+</svg>

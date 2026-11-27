@@ -1,0 +1,713 @@
+<title>LydiaCRM Preview v2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
+<style>
+/* Layout: dark premium marketing shell; one centered column of full-width bands; a single auto-advancing
+   feature showcase replaces the cramped sticky sections so it stacks cleanly on phones. */
+:root{
+  --ink:#070a12; --ink-2:#0b1020; --panel:#0e1526; --panel-2:#121a2e;
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+  --fg:#eef1f8; --fg-2:#aab2c8; --fg-3:#737c93;
+  --blue:#2f6bff; --blue-2:#6f97ff; --blue-soft:rgba(47,107,255,.14); --glow:rgba(47,107,255,.45);
+  --mint:#38d39f; --amber:#f5b445;
+  --display:"Sora",ui-sans-serif,system-ui,sans-serif;
+  --body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --maxw:1180px; --r:16px; --hdr:66px; --rev:34px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + var(--rev) + 14px)}
+body{margin:0;background:var(--ink);color:var(--fg);font:16px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--ink)}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.02em;text-wrap:balance;margin:0;font-weight:700}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px;border-radius:8px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font:600 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--blue-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:14px 24px;font:600 15px/1 var(--body);border:1px solid transparent;cursor:pointer;transition:transform .18s ease, background .18s, box-shadow .18s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 34px var(--glow)}
+.btn-primary:hover{box-shadow:0 14px 44px var(--glow)}
+.btn-ghost{background:rgba(255,255,255,.05);border-color:var(--line-2);color:var(--fg)}
+
+/* ---- consistent screenshot frame (premium, identical everywhere) ---- */
+.frame{position:relative;border-radius:14px;background:#0a1020;border:1px solid var(--line-2);padding:9px;box-shadow:0 40px 120px rgba(0,0,0,.6), 0 2px 0 rgba(255,255,255,.04) inset}
+.frame .bar{display:flex;align-items:center;gap:6px;padding:3px 6px 10px}
+.frame .bar i{width:9px;height:9px;border-radius:50%;background:#2b3350}
+.frame .bar b{margin:0 auto;display:block;font:500 11px var(--body);color:var(--fg-3);background:#060a16;border:1px solid var(--line);padding:4px 46px;border-radius:7px;font-weight:500}
+.frame img{width:100%;border-radius:8px;display:block}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- review strip (slim, not cluttered) ---------- */
+.rev{position:sticky;top:env(safe-area-inset-top,0px);z-index:95;height:var(--rev);background:#10172b;border-bottom:1px solid var(--line);font:500 12.5px/1 var(--body);color:var(--fg-2)}
+.rev .wrap{height:100%;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.rev .dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(56,211,159,.16);flex:none}
+.rev .l{display:flex;align-items:center;gap:9px;min-width:0}
+.rev .l span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rev a{color:var(--blue-2);font-weight:600;white-space:nowrap}
+
+/* ---------- header + mega menu ---------- */
+.hdr{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--rev));z-index:80;height:var(--hdr);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+.hdr.scrolled{background:rgba(7,10,18,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--line)}
+.hdr .wrap{height:100%;display:flex;align-items:center;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;font:800 20px var(--display);letter-spacing:-.03em}
+.brand svg{width:30px;height:30px;flex:none}
+.brand small{font:600 10px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-left:-2px;align-self:flex-end;padding-bottom:3px}
+.nav{position:relative;display:flex;gap:2px;margin:0 auto}
+.nav>a,.nav>button{position:relative;background:none;border:0;color:var(--fg-2);font:500 15px var(--body);padding:9px 14px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.nav>a:hover,.nav>button:hover,.nav>button[aria-expanded=true]{color:var(--fg);background:rgba(255,255,255,.05)}
+.chev{transition:transform .25s}[aria-expanded=true] .chev{transform:rotate(180deg)}
+.hcta{display:flex;align-items:center;gap:12px}
+.hcta .login{color:var(--fg-2);font-weight:500}
+.hcta .btn{padding:10px 18px}
+.mega{position:absolute;left:50%;top:calc(100% + 8px);width:min(940px,calc(100vw - 32px));transform:translateX(-50%) translateY(-8px);opacity:0;visibility:hidden;transition:opacity .18s, transform .3s cubic-bezier(.2,.9,.3,1.1), visibility 0s .2s;background:#0a1122;border:1px solid var(--line-2);border-radius:18px;box-shadow:0 34px 90px rgba(0,0,0,.65);padding:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px 16px}
+.mega::before{content:"";position:absolute;inset:-14px 0 auto;height:14px}
+.mega.open{opacity:1;visibility:visible;transform:translateX(-50%);transition:opacity .18s, transform .3s cubic-bezier(.2,.9,.3,1.1)}
+.mega h4{font:600 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);padding:6px 10px;margin:0}
+.mega a{display:block;padding:9px 10px;border-radius:10px;transition:background .15s}
+.mega a:hover{background:var(--blue-soft)}
+.mega a b{display:block;font:600 14px var(--body);color:var(--fg)}
+.mega a span{display:block;font:13px/1.4 var(--body);color:var(--fg-2);margin-top:1px}
+.mega .foot{grid-column:1/-1;margin-top:8px;padding:12px 10px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13.5px;color:var(--fg-2)}
+.mega .foot a{display:inline;padding:0;color:var(--blue-2);font-weight:600}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line-2);color:var(--fg);border-radius:10px;padding:9px 11px;cursor:pointer}
+.msheet{display:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-top:64px;overflow:clip}
+.hero::before{content:"";position:absolute;inset:0 0 auto;height:860px;background:
+  radial-gradient(760px 420px at 70% 30%, rgba(47,107,255,.26), transparent 70%),
+  radial-gradient(620px 360px at 12% 8%, rgba(56,211,159,.08), transparent 70%);
+  pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);border-radius:999px;padding:5px 14px 5px 6px;font-size:13.5px;color:var(--fg-2);margin-bottom:22px}
+.badge em{font-style:normal;background:var(--blue);color:#fff;border-radius:999px;padding:3px 10px;font:600 12px var(--body)}
+.hero h1{font-size:clamp(33px,4.4vw,56px);line-height:1.05;font-weight:800}
+.hero h1 .g{background:linear-gradient(92deg,var(--blue-2),#a9c0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{margin-top:20px;max-width:30rem;color:var(--fg-2);font-size:17.5px}
+.hero .ctas{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+.hero .fine{margin-top:16px;font-size:13px;color:var(--fg-3)}
+.hero-media{position:relative}
+.hero-media .frame{animation:bob 7s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.chip{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;background:rgba(10,16,30,.92);border:1px solid var(--line-2);backdrop-filter:blur(8px);border-radius:12px;padding:9px 13px;font-size:13px;color:var(--fg);box-shadow:0 16px 40px rgba(0,0,0,.5);white-space:nowrap}
+.chip i{width:8px;height:8px;border-radius:50%;flex:none}
+.chip.a{left:-22px;top:26%;animation:bob 6s ease-in-out infinite}.chip.a i{background:var(--mint);box-shadow:0 0 0 4px rgba(56,211,159,.18)}
+.chip.b{right:-18px;top:8%;animation:bob 6s ease-in-out -2s infinite}.chip.b i{background:var(--blue-2);box-shadow:0 0 0 4px rgba(111,151,255,.18)}
+.chip.c{right:4%;bottom:-16px;animation:bob 6s ease-in-out -4s infinite}.chip.c i{background:var(--amber);box-shadow:0 0 0 4px rgba(245,180,69,.18)}
+
+/* ---------- marquee ---------- */
+.mq{border-block:1px solid var(--line);margin-top:54px;padding:22px 0;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mq p{text-align:center;font:600 11px var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3);margin-bottom:14px}
+.mq .row{display:flex;gap:46px;width:max-content;animation:scroll 38s linear infinite;color:var(--fg-2);font:600 17px var(--display)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- pillars ---------- */
+.pillars{padding:96px 0 20px}
+.pillars .head{max-width:620px;margin-bottom:40px}
+.pillars h2{font-size:clamp(27px,3.3vw,40px);line-height:1.12}
+.pillars .head p{margin-top:14px;color:var(--fg-2)}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pcard{background:linear-gradient(180deg,var(--panel),var(--ink-2));border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.pcard .ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:var(--blue-soft);color:var(--blue-2);margin-bottom:14px}
+.pcard h3{font-size:17px}
+.pcard p{margin-top:7px;color:var(--fg-2);font-size:14px}
+
+/* ---------- feature showcase (centerpiece) ---------- */
+.show{padding:96px 0}
+.show .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:30px}
+.show h2{font-size:clamp(27px,3.3vw,40px);line-height:1.1;max-width:16ch}
+.show .head p{color:var(--fg-2);max-width:34ch}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tabs button{background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--fg-2);font:600 14px var(--body);padding:10px 16px;border-radius:999px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.tabs button:hover{color:var(--fg)}
+.tabs button.on{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 8px 24px var(--glow)}
+.stage{display:grid;grid-template-columns:.82fr 1.18fr;gap:34px;align-items:center;background:linear-gradient(180deg,var(--panel),var(--ink-2));border:1px solid var(--line);border-radius:22px;padding:30px;position:relative;overflow:hidden}
+.stage::after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;background:radial-gradient(circle,var(--glow),transparent 65%);opacity:.5;pointer-events:none}
+.panel{position:relative;z-index:2;min-height:270px}
+.panel .k{font:600 12px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--blue-2)}
+.panel h3{font-size:clamp(21px,2.4vw,27px);margin:10px 0 12px;line-height:1.14}
+.panel p{color:var(--fg-2);font-size:15.5px}
+.panel ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px}
+.panel li{display:flex;gap:10px;font-size:14.5px;color:var(--fg)}
+.panel li svg{flex:none;margin-top:3px;color:var(--mint)}
+.showimg{position:relative;z-index:2}
+.showimg .slide{display:none}
+.showimg .slide.on{display:block;animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
+.prog{display:flex;gap:6px;margin-top:18px}
+.prog i{height:3px;flex:1;background:var(--line-2);border-radius:3px;overflow:hidden}
+.prog i b{display:block;height:100%;width:0;background:var(--blue)}
+.prog i.on b{animation:fill 6s linear forwards}
+@keyframes fill{to{width:100%}}
+
+/* ---------- day with lydia (stepper) ---------- */
+.day{padding:40px 0 96px}
+.day .head{max-width:640px;margin-bottom:34px}
+.day h2{font-size:clamp(27px,3.3vw,40px);line-height:1.12}
+.day .head p{margin-top:14px;color:var(--fg-2)}
+.steps{display:grid;gap:18px}
+.step{display:grid;grid-template-columns:54px 1fr 1.25fr;gap:22px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.step .n{width:40px;height:40px;border-radius:12px;background:var(--blue-soft);color:var(--blue-2);display:grid;place-items:center;font:700 16px var(--display)}
+.step h3{font-size:19px}
+.step .tag{font:600 11px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);margin-bottom:6px}
+.step p{color:var(--fg-2);font-size:14.5px;margin-top:7px}
+.step .frame{padding:7px}
+
+/* ---------- AI band ---------- */
+.ai{padding:96px 0;background:linear-gradient(180deg,var(--ink),#080d1a,var(--ink))}
+.ai .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.ai .eyebrow{color:var(--mint)}
+.ai h2{font-size:clamp(27px,3.3vw,40px);line-height:1.1;margin-top:14px}
+.ai>.wrap>div:first-child p{margin-top:16px;color:var(--fg-2)}
+.ai-list{margin-top:22px;display:grid;gap:14px}
+.ai-item{display:flex;gap:14px}
+.ai-item .ic{width:38px;height:38px;border-radius:10px;flex:none;display:grid;place-items:center;background:rgba(56,211,159,.12);color:var(--mint)}
+.ai-item b{font:600 15.5px var(--body)}
+.ai-item p{color:var(--fg-2);font-size:14px;margin-top:2px}
+.ai-media{display:grid;gap:14px}
+
+/* ---------- flywheel ---------- */
+.fw{padding:96px 0}
+.fw .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.fw h2{font-size:clamp(27px,3.3vw,40px);line-height:1.1}
+.fw h2 span{color:var(--blue-2)}
+.fw .lede{margin-top:14px;color:var(--fg-2)}
+.fw-steps{margin-top:22px;display:grid;gap:4px}
+.fw-steps button{text-align:left;background:none;border:0;border-left:2px solid var(--line-2);padding:10px 16px;color:var(--fg-3);cursor:pointer;transition:all .25s;border-radius:0 8px 8px 0}
+.fw-steps button.on{border-left-color:var(--blue);background:var(--blue-soft);color:var(--fg)}
+.fw-steps button b{font:600 15px var(--body);display:block}
+.fw-steps button span{font-size:13px}
+.fw-steps button.on span{color:var(--fg-2)}
+.wheel{position:relative;width:min(440px,78vw);aspect-ratio:1;margin:auto}
+.wheel svg{position:absolute;inset:0;width:100%;height:100%}
+.wheel .hub{position:absolute;inset:36%;border-radius:24px;background:linear-gradient(145deg,#2f6bff,#1a46c4);display:grid;place-items:center;box-shadow:0 0 64px var(--glow)}
+.wheel .hub svg{position:static;width:52%;height:52%}
+.wheel .node{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:500 12px var(--body);color:var(--fg-3);white-space:nowrap;padding:6px 11px;border-radius:999px;background:rgba(10,16,30,.7);border:1px solid transparent;transition:all .3s}
+.wheel .node.on{color:#fff;background:var(--blue);border-color:var(--blue);box-shadow:0 0 26px var(--glow)}
+
+/* ---------- devices ---------- */
+.dev{padding:40px 0 96px}
+.dev .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.dev h2{font-size:clamp(27px,3.3vw,40px);line-height:1.12}
+.dev h2 span{color:var(--blue-2)}
+.dev .lede{margin-top:14px;color:var(--fg-2);max-width:30rem}
+.stats{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.stats b{display:block;font:800 32px/1 var(--display);font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--fg-2)}
+.phones{position:relative;height:540px}
+.pf{position:absolute;width:244px;border-radius:38px;padding:8px;background:#0a0f1c;border:1px solid var(--line-2);box-shadow:0 44px 100px rgba(0,0,0,.6)}
+.pf img{border-radius:30px;width:100%}
+.pf.one{left:6%;top:30px;z-index:1;rotate:-4deg}
+.pf.two{right:6%;top:0;z-index:2;rotate:3deg}
+
+/* ---------- tour ---------- */
+.tour{padding:96px 0;border-top:1px solid var(--line);background:var(--ink-2)}
+.tour .head{max-width:680px;margin-bottom:30px}
+.tour h2{font-size:clamp(27px,3.3vw,40px);line-height:1.1}
+.tour .head p{margin-top:14px;color:var(--fg-2)}
+.tour-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+.player video{width:100%;border-radius:14px;border:1px solid var(--line-2);background:#000;display:block;aspect-ratio:16/10}
+.player .cap{margin-top:10px;font-size:13px;color:var(--fg-3)}
+.chaps{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}
+.chaps h4{font:600 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin:6px 10px 10px}
+.chaps ol{list-style:none;margin:0;padding:0;counter-reset:c;display:grid;gap:2px}
+.chaps li{counter-increment:c}
+.chaps li button{width:100%;text-align:left;background:none;border:0;color:var(--fg-2);padding:9px 12px;border-radius:9px;cursor:pointer;font:14px var(--body);display:flex;gap:10px}
+.chaps li button::before{content:counter(c,decimal-leading-zero);color:var(--fg-3);font-variant-numeric:tabular-nums;font-weight:600}
+.chaps li button:hover{background:rgba(255,255,255,.04);color:var(--fg)}
+
+/* ---------- pricing ---------- */
+.price{padding:96px 0;text-align:center}
+.price h2{font-size:clamp(27px,3.3vw,40px)}
+.price>.wrap>p{margin-top:12px;color:var(--fg-2)}
+.plans{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,370px));justify-content:center;gap:18px;text-align:left}
+.plan{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;gap:14px;align-content:start}
+.plan.pro{border-color:rgba(111,151,255,.5);box-shadow:0 0 70px rgba(47,107,255,.16)}
+.plan h3{font-size:20px;display:flex;justify-content:space-between;align-items:center}
+.plan h3 small{font:600 11px var(--body);background:var(--blue);color:#fff;padding:4px 10px;border-radius:999px}
+.plan .amt{font:800 42px/1 var(--display)}.plan .amt span{font:400 15px var(--body);color:var(--fg-3)}
+.plan>p{color:var(--fg-2);font-size:14.5px}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:14.5px;color:var(--fg-2)}
+.plan li{display:flex;gap:9px}.plan li svg{flex:none;margin-top:3px;color:var(--blue-2)}
+.plan .btn{justify-content:center}
+
+/* ---------- faq ---------- */
+.faq{padding:0 0 96px}
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px}
+.faq h2{font-size:clamp(27px,3.3vw,40px);line-height:1.1}
+.faq h2 span{color:var(--fg-3)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:20px 0;font:600 17px var(--display);display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--fg-2);font-family:var(--body);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--fg-2);padding-bottom:20px;max-width:60ch}
+
+/* ---------- cta ---------- */
+.cta{padding:0 0 100px}
+.cta-box{position:relative;overflow:hidden;background:linear-gradient(135deg,#2f6bff,#1a3fae);border-radius:26px;padding:72px 24px;text-align:center;display:grid;gap:16px;justify-items:center}
+.cta-box::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 240px at 50% 0,rgba(255,255,255,.18),transparent 70%)}
+.cta-box>*{position:relative}
+.cta-box h2{font-size:clamp(27px,3.6vw,46px);line-height:1.08;max-width:18ch}
+.cta-box p{color:#dde6ff;max-width:46ch}
+.cta-box .btn{background:#fff;color:#12235c}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:40px 0 60px;font-size:14px;color:var(--fg-3)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+footer nav{display:flex;flex-wrap:wrap;gap:18px}
+footer a{color:var(--fg-2)}
+
+/* ---------- review section (before/after) ---------- */
+.rsec{border-top:2px dashed rgba(245,180,69,.3);background:#0a0906;padding:80px 0}
+.rsec h2{font-size:30px;color:var(--amber)}
+.rsec .sub{margin-top:10px;color:var(--fg-2);max-width:72ch}
+.chglist{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.chglist div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.chglist b{display:block;font-family:var(--display);margin-bottom:6px;color:var(--fg)}
+.chglist p{color:var(--fg-2);font-size:14px}
+.ba{margin-top:28px;display:grid;gap:26px}
+.ba-row h3{font-size:17px;margin-bottom:10px}
+.ba-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ba-pair figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px}
+.ba-pair img{border-radius:8px;width:100%}
+.ba-pair figcaption{font:600 11px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);padding:7px 4px 2px}
+
+/* =========== responsive =========== */
+@media (max-width:960px){
+  .nav,.hcta .login{display:none}
+  .burger{display:inline-flex}
+  .hero .wrap{grid-template-columns:1fr;gap:34px}
+  .hero-media{order:-1}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .stage{grid-template-columns:1fr;gap:24px;padding:22px}
+  .showimg{order:-1}
+  .panel{min-height:0}
+  .step{grid-template-columns:40px 1fr;gap:14px}
+  .step .frame{grid-column:1/-1;margin-top:4px}
+  .ai .wrap,.fw .wrap,.dev .wrap,.tour-grid,.faq .wrap{grid-template-columns:1fr;gap:34px}
+  .msheet{position:fixed;inset:calc(env(safe-area-inset-top,0px) + var(--rev) + var(--hdr)) 0 0;background:var(--ink);z-index:79;overflow:auto;padding:14px max(20px,env(safe-area-inset-left,0px)) 46px}
+  .msheet[hidden]{display:none}
+  .msheet details{border-bottom:1px solid var(--line)}
+  .msheet summary{list-style:none;padding:16px 2px;font:700 18px var(--display);display:flex;justify-content:space-between;cursor:pointer}
+  .msheet summary::-webkit-details-marker{display:none}
+  .msheet summary::after{content:"+";color:var(--fg-3)}
+  .msheet details[open] summary::after{content:"–"}
+  .msheet .grp h5{margin:12px 0 4px;font:600 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3)}
+  .msheet .grp a{display:block;padding:8px 2px;color:var(--fg-2)}
+  .msheet>a{display:block;padding:16px 2px;border-bottom:1px solid var(--line);font:700 18px var(--display)}
+  .msheet .btn{margin-top:20px;width:100%}
+}
+@media (max-width:640px){
+  :root{--rev:auto}
+  .rev{height:auto;padding:7px 0}
+  .rev .wrap{flex-wrap:wrap;gap:4px 12px}
+  .rev a.ba-link{display:none}
+  .hero{padding-top:30px}
+  .chip.a{left:0;top:auto;bottom:-14px}.chip.b{right:0;top:-12px}.chip.c{display:none}
+  .pgrid,.chglist,.ba-pair,.stats{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr}
+  .phones{height:430px}.pf{width:180px}.pf.one{left:0}.pf.two{right:0}
+  .show .head,.day .head{display:block}
+  .hcta{display:none}
+  .brand small{display:none}
+  .wheel{width:min(300px,76vw)}
+  .wheel .node{font-size:10.5px;padding:3px 7px}
+  .fw-steps button span{font-size:12.5px}
+  .stage{padding:16px}
+  .step{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+</style>
+
+<div class="rev">
+  <div class="wrap">
+    <span class="l"><span class="dot"></span><span><b style="color:var(--fg)">Preview v2</b> — not the live site · images captured from the current LydiaCRM app</span></span>
+    <span style="display:flex;gap:14px"><a class="ba-link" href="#changes">What changed →</a><a href="https://w0l1-stack.github.io/LydiaCRM-website/" target="_blank" rel="noopener">Live site ↗</a></span>
+  </div>
+</div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Lydia home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="24" fill="#2f6bff"/><g transform="translate(50,48)" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M -18 -18 Q -18 10 -6 20"/><path d="M 18 -18 Q 18 10 6 20"/><path d="M -6 20 Q 0 23 6 20"/><line x1="-8" y1="-15" x2="13" y2="17"/></g></svg>
+      Lydia <small>Business&nbsp;OS</small>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <button id="featBtn" aria-expanded="false" aria-controls="mega">Features <svg class="chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <a href="#how">How it works</a>
+      <a href="#tour">Product tour</a>
+      <a href="#pricing">Pricing</a>
+      <div class="mega" id="mega" role="region" aria-label="Features">
+        <div>
+          <h4>Customers &amp; sales</h4>
+          <a href="#show"><b>Shared Inbox</b><span>SMS, email &amp; WhatsApp in one queue</span></a>
+          <a href="#show"><b>Contacts &amp; companies</b><span>One timeline per customer</span></a>
+          <a href="#show"><b>Pipeline &amp; quotes</b><span>From enquiry to approved scope</span></a>
+        </div>
+        <div>
+          <h4>Operations</h4>
+          <a href="#show"><b>Jobs &amp; recurring visits</b><span>One-time and repeat work</span></a>
+          <a href="#show"><b>Schedule &amp; My Day</b><span>Dispatch board and field day list</span></a>
+          <a href="#show"><b>Action Center &amp; Help Desk</b><span>Everything that needs a person</span></a>
+        </div>
+        <div>
+          <h4>Billing &amp; portal</h4>
+          <a href="#show"><b>Invoices &amp; payments</b><span>Issue, track, record verified pay</span></a>
+          <a href="#show"><b>Customer Portal</b><span>Quotes, visits &amp; invoices for them</span></a>
+          <a href="#pricing"><b>Plans &amp; billing</b><span>Starter or Pro</span></a>
+        </div>
+        <div>
+          <h4>Lydia AI &amp; insights</h4>
+          <a href="#ai"><b>Business Brain</b><span>Lydia learns your services &amp; prices</span></a>
+          <a href="#ai"><b>AI Work &amp; Inspector</b><span>Drafts you approve, runs you can audit</span></a>
+          <a href="#show"><b>Campaigns &amp; Analytics</b><span>Send, segment, measure</span></a>
+        </div>
+        <div class="foot"><span>New here? Follow one enquiry from first message to paid invoice.</span><a href="#how">See how it works →</a></div>
+      </div>
+    </nav>
+    <div class="hcta">
+      <a class="login" href="https://lydiacrm.duckdns.org/login">Log in</a>
+      <a class="btn btn-primary" href="https://lydiacrm.duckdns.org/register">Start free</a>
+    </div>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="msheet" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.7"/></svg></button>
+  </div>
+</header>
+
+<div class="msheet" id="msheet" hidden>
+  <details><summary>Features</summary>
+    <div class="grp">
+      <h5>Customers &amp; sales</h5><a href="#show">Shared Inbox</a><a href="#show">Contacts &amp; companies</a><a href="#show">Pipeline &amp; quotes</a>
+      <h5>Operations</h5><a href="#show">Jobs &amp; recurring visits</a><a href="#show">Schedule &amp; My Day</a><a href="#show">Action Center &amp; Help Desk</a>
+      <h5>Billing &amp; portal</h5><a href="#show">Invoices &amp; payments</a><a href="#show">Customer Portal</a>
+      <h5>Lydia AI &amp; insights</h5><a href="#ai">Business Brain</a><a href="#ai">AI Work &amp; Inspector</a><a href="#show">Campaigns &amp; Analytics</a>
+    </div>
+  </details>
+  <a href="#how">How it works</a><a href="#tour">Product tour</a><a href="#pricing">Pricing</a>
+  <a href="https://lydiacrm.duckdns.org/login">Log in</a>
+  <a class="btn btn-primary" href="https://lydiacrm.duckdns.org/register">Start your 14-day free trial</a>
+</div>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="badge"><em>New</em> Jobs, invoices &amp; a customer portal</span>
+      <h1>Run the whole service business from <span class="g">one screen.</span></h1>
+      <p class="lede">Messages, quotes, jobs, schedules, invoices and follow-ups in one place — with an AI that reads your business and drafts the next move. Lydia is the CRM for studios, crews and clinics that are done juggling apps.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="https://lydiacrm.duckdns.org/register">Start your 14-day free trial →</a>
+        <a class="btn btn-ghost" href="#tour">▶ Watch the 48-second tour</a>
+      </div>
+      <p class="fine">No card needed · Set up in minutes · Cancel anytime</p>
+    </div>
+    <div class="hero-media">
+      <div class="frame">
+        <div class="bar"><i></i><i></i><i></i><b>app.lydiacrm.com</b></div>
+        <img src="img/dashboard.webp" alt="Lydia dashboard: Good morning, Amara. Decide today, Business overview, AI Work and the pipeline, for Bloom & Co. Beauty Studio." width="1600" height="1000" fetchpriority="high">
+      </div>
+      <div class="chip a"><i></i>Deposit paid · $50 · Bridal party</div>
+      <div class="chip b"><i></i>Lydia drafted a reply to Oluchi</div>
+      <div class="chip c"><i></i>Visit booked · Sat 10:00</div>
+    </div>
+  </div>
+  <div class="mq">
+    <p>Built for the businesses that keep a city running</p>
+    <div class="row" aria-hidden="true">
+      <span>Beauty studios</span><span>Cleaning crews</span><span>Gyms &amp; fitness</span><span>Home repair</span><span>Dental &amp; clinics</span><span>Tutors &amp; schools</span><span>Photographers</span><span>Landscaping</span>
+      <span>Beauty studios</span><span>Cleaning crews</span><span>Gyms &amp; fitness</span><span>Home repair</span><span>Dental &amp; clinics</span><span>Tutors &amp; schools</span><span>Photographers</span><span>Landscaping</span>
+    </div>
+  </div>
+</section>
+
+<section class="pillars wrap reveal">
+  <div class="head">
+    <p class="eyebrow">Not another app</p>
+    <h2>One Business OS, not six tabs you pay for separately.</h2>
+    <p>Every message, deal, job and payment lands in the same place — so the next action is always one click away, and Lydia can see the whole picture.</p>
+  </div>
+  <div class="pgrid">
+    <div class="pcard"><div class="ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Talk to customers</h3><p>SMS, email and WhatsApp in one shared inbox, with the oldest wait at the top.</p></div>
+    <div class="pcard"><div class="ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div><h3>Win the work</h3><p>Turn an enquiry into a quote, an approved scope and a scheduled job without re-typing a thing.</p></div>
+    <div class="pcard"><div class="ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h3>Run the day</h3><p>Jobs, recurring visits, a dispatch schedule and a field "My Day" that each person just opens.</p></div>
+    <div class="pcard"><div class="ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Get paid</h3><p>Issue invoices, record verified payments and give customers a portal for their quotes and visits.</p></div>
+  </div>
+</section>
+
+<section class="show wrap" id="show">
+  <div class="head reveal">
+    <h2>See every part of Lydia doing real work.</h2>
+    <p>Each screen below is captured from the current app, seeded with one beauty studio's workspace.</p>
+  </div>
+  <div class="tabs" id="tabs" role="tablist" aria-label="Features"></div>
+  <div class="stage reveal">
+    <div class="panel" id="panel" aria-live="polite"></div>
+    <div class="showimg" id="showimg"></div>
+  </div>
+  <div class="prog" id="prog" aria-hidden="true"></div>
+</section>
+
+<section class="day wrap" id="how">
+  <div class="head reveal">
+    <p class="eyebrow">How it works</p>
+    <h2>One enquiry, from first message to paid.</h2>
+    <p>Follow Oluchi's bridal booking at Bloom &amp; Co. through the real screens. Every step shows what Amara does and what changes for her customer.</p>
+  </div>
+  <div class="steps" id="steps"></div>
+</section>
+
+<section class="ai" id="ai">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Lydia AI</p>
+      <h2>An AI that actually knows your business.</h2>
+      <p>Lydia reads your website once, then uses your real customer history to draft replies, sort what needs you, and suggest the next step — and it shows its work, so you stay in control.</p>
+      <div class="ai-list">
+        <div class="ai-item"><div class="ic"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><b>Business Brain</b><p>Scans your site for services, prices, hours and policies. You approve every fact before Lydia uses it.</p></div></div>
+        <div class="ai-item"><div class="ic"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div><div><b>AI Work &amp; Action Center</b><p>Drafts replies and flags what matters — a reply waiting too long, an overdue invoice, a failed automation.</p></div></div>
+        <div class="ai-item"><div class="ic"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12l3 3 5-6"/></svg></div><div><b>Execution Inspector</b><p>Every automation run shows its input, mapping, branch and output — so you can trust what ran.</p></div></div>
+      </div>
+      <p style="margin-top:22px"><a class="btn btn-ghost" href="#show">Explore Lydia AI →</a></p>
+    </div>
+    <div class="ai-media reveal">
+      <div class="frame"><div class="bar"><i></i><i></i><i></i><b>Business Brain</b></div><img src="img/brain.webp" alt="Business Brain: a reliable foundation for Lydia, with approved findings for services, pricing, policies, hours, FAQs, contact and brand voice." loading="lazy"></div>
+      <div class="frame"><div class="bar"><i></i><i></i><i></i><b>Execution Inspector</b></div><img src="img/inspector.webp" alt="Execution Inspector showing a finished automation run with its processing map, input and output, and configured mappings." loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="fw" id="fw">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Why it compounds</p>
+      <h2>Not another app. <span>A flywheel.</span></h2>
+      <p class="lede">Every interaction feeds the next. The more you run on Lydia, the more it knows — and the more it can do for you.</p>
+      <div class="fw-steps" id="fwSteps"></div>
+    </div>
+    <div class="wheel" id="wheel" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,.08)" stroke-width=".4"/><circle id="arc" cx="50" cy="50" r="40" fill="none" stroke="#2f6bff" stroke-width=".9" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 50 50)"/></svg>
+      <div id="spin" style="position:absolute;inset:0"></div>
+      <div class="hub"><svg viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50,48)" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M -18 -18 Q -18 10 -6 20"/><path d="M 18 -18 Q 18 10 6 20"/><path d="M -6 20 Q 0 23 6 20"/><line x1="-8" y1="-15" x2="13" y2="17"/></g></svg></div>
+    </div>
+  </div>
+</section>
+
+<section class="dev">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">On every screen</p>
+      <h2>Run it from the desk <span>or the back of a cab.</span></h2>
+      <p class="lede">The same live workspace on desktop, tablet and phone. Reply to a customer, check today's visits and see who still owes you — wherever you are.</p>
+      <div class="stats">
+        <div><b>1</b><span>inbox for every channel</span></div>
+        <div><b>13</b><span>automation building blocks</span></div>
+        <div><b>14</b><span>days free, no card</span></div>
+      </div>
+    </div>
+    <div class="phones reveal">
+      <div class="pf one"><img src="img/m-inbox.webp" alt="Lydia inbox on a phone" loading="lazy"></div>
+      <div class="pf two"><img src="img/m-dashboard.webp" alt="Lydia dashboard on a phone" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="tour" id="tour">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">Product tour</p>
+      <h2>Watch Lydia run a real workspace.</h2>
+      <p>A 48-second pass through the current app — dashboard, inbox, pipeline, schedule, campaigns, AI Work, Business Brain, analytics and payments. A full narrated 7-minute tour is in production.</p>
+    </div>
+    <div class="tour-grid">
+      <div class="player reveal">
+        <video id="vid" controls preload="metadata" poster="media/app-tour-poster.jpg" playsinline>
+          <source src="media/app-tour.mp4" type="video/mp4">
+        </video>
+        <p class="cap">Silent walkthrough, captured live from the running app. The narrated 7:20 cut adds voiceover and captions.</p>
+      </div>
+      <div class="chaps reveal">
+        <h4>In this tour</h4>
+        <ol id="chaps"></ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="price" id="pricing">
+  <div class="wrap">
+    <p class="eyebrow">Pricing</p>
+    <h2>Less than one lost customer a month.</h2>
+    <p>Simple plans. Every plan starts with a 14-day free trial.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Starter</h3>
+        <p>Everything a growing shop needs to stop losing customers.</p>
+        <div class="amt">$49<span>/month</span></div>
+        <a class="btn btn-ghost" href="https://lydiacrm.duckdns.org/register">Start free trial</a>
+        <ul id="starter"></ul>
+      </div>
+      <div class="plan pro">
+        <h3>Pro <small>Most popular</small></h3>
+        <p>No limits. For businesses that are scaling fast.</p>
+        <div class="amt">$99<span>/month</span></div>
+        <a class="btn btn-primary" href="https://lydiacrm.duckdns.org/register">Start free trial</a>
+        <ul id="pro"></ul>
+      </div>
+    </div>
+    <p class="fine" style="margin-top:18px;color:var(--fg-3);font-size:13px">Prices in USD. Billed monthly. Cancel anytime. Plan limits mirror the live site — confirm against the current plan catalogue before release.</p>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="reveal"><p class="eyebrow">FAQ</p><h2>Questions, <span>answered.</span></h2></div>
+    <div>
+      <details><summary>Do I need to be good with tech?</summary><p>No. If you can use WhatsApp, you can use Lydia. Add your contacts, connect your email or SMS, and switch on a ready-made follow-up.</p></details>
+      <details><summary>What happens after the free trial?</summary><p>You get 14 days with everything switched on. After that, choose Starter or Pro to keep going. No card is needed to start.</p></details>
+      <details><summary>Can I use my own email and SMS provider?</summary><p>Yes. Lydia works with Resend, SendGrid and Mailgun for email and Twilio, Vonage and others for SMS. Bring your own accounts, or start with ours.</p></details>
+      <details><summary>How does the AI work?</summary><p>Lydia's AI drafts replies, sorts incoming messages and suggests next steps based on your real customer history. By default it waits for your approval; it only acts on its own where you have given it permission, and you can take that back at any time.</p></details>
+      <details><summary>Is my customer data safe?</summary><p>Every business on Lydia is fully separated from every other, and your provider keys are encrypted at rest.</p></details>
+      <details><summary>Can my team use it too?</summary><p>Yes. Starter includes 3 team members and Pro has no limit. Assign conversations, deals and visits so everyone knows who is handling what.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap"><div class="cta-box reveal">
+    <h2>Your next customer is messaging you right now.</h2>
+    <p>Make sure Lydia is there to answer. Start free today and have your first automation running before lunch.</p>
+    <a class="btn" href="https://lydiacrm.duckdns.org/register">Start your 14-day free trial →</a>
+  </div></div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 LydiaCRM</span>
+    <nav aria-label="Legal">
+      <a href="https://w0l1-stack.github.io/LydiaCRM-website/privacy.html">Privacy</a>
+      <a href="https://w0l1-stack.github.io/LydiaCRM-website/terms.html">Terms</a>
+      <a href="https://w0l1-stack.github.io/LydiaCRM-website/security.html">Security</a>
+      <a href="https://w0l1-stack.github.io/LydiaCRM-website/cookies.html">Cookies</a>
+      <a href="https://w0l1-stack.github.io/LydiaCRM-website/dpa.html">DPA</a>
+    </nav>
+  </div>
+</footer>
+
+<section class="rsec" id="changes">
+  <div class="wrap">
+    <h2>What changed from the first preview</h2>
+    <p class="sub">You rejected v1 as unprofessional, squeezed on mobile, light on motion, too generic, and using stale screenshots. This rebuild addresses each, and every screenshot now comes from the current running app.</p>
+    <div class="chglist">
+      <div><b>Current product images</b>Booted the real CRM locally, seeded the demo, and captured the current UI — Action Center, Jobs, My Day, Business Brain, Execution Inspector, Customer Portal — instead of the old shots.</div>
+      <div><b>Mobile, not squeezed</b>Rebuilt mobile-first: sticky scrollytelling replaced with one tabbed showcase that simply stacks, generous spacing, tested at 390 and 320px.</div>
+      <div><b>Deliberate motion</b>Auto-advancing feature showcase, scroll reveals, hero float, animated flywheel and marquee — all CSS-driven with reduced-motion respected.</div>
+      <div><b>Specific copy</b>Generic lines cut; real feature names and a single customer story (Oluchi at Bloom &amp; Co.) carry the page.</div>
+      <div><b>Cleaner, more pro</b>One consistent screenshot frame everywhere, restrained accent use, review notes moved here instead of littering the page.</div>
+      <div><b>Still needed</b>The narrated 7:20 tour; a couple of feature screens (populated Jobs/Invoices) seeded for clean captures; plan wording checked; then ported into the real website/src (React + Framer Motion).</div>
+    </div>
+  </div>
+</section>
+
+<script>
+(() => {
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* header scroll state */
+const hdr=$('#hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>8),{passive:true});
+
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+$$('.reveal').forEach(el=>io.observe(el));
+
+/* mega menu */
+const mega=$('#mega'),fb=$('#featBtn');let ct;
+const openM=()=>{clearTimeout(ct);mega.classList.add('open');fb.setAttribute('aria-expanded','true');};
+const closeM=f=>{mega.classList.remove('open');fb.setAttribute('aria-expanded','false');if(f)fb.focus();};
+fb.addEventListener('mouseenter',openM);
+fb.addEventListener('click',()=>mega.classList.contains('open')?closeM():openM());
+mega.addEventListener('mouseenter',()=>clearTimeout(ct));
+[fb,mega].forEach(el=>el.addEventListener('mouseleave',()=>{ct=setTimeout(closeM,200);}));
+$$('.nav>a').forEach(a=>a.addEventListener('mouseenter',()=>closeM()));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&mega.classList.contains('open'))closeM(true);});
+mega.addEventListener('click',e=>{if(e.target.closest('a'))closeM();});
+
+/* mobile sheet */
+const burger=$('#burger'),sheet=$('#msheet');
+burger.addEventListener('click',()=>{const o=sheet.hidden;sheet.hidden=!o;burger.setAttribute('aria-expanded',String(o));document.body.style.overflow=o?'hidden':'';});
+sheet.addEventListener('click',e=>{if(e.target.closest('a')){sheet.hidden=true;burger.setAttribute('aria-expanded','false');document.body.style.overflow='';}});
+
+/* ---- feature showcase ---- */
+const FEAT=[
+ ['Shared Inbox','inbox-ai','One inbox for every channel','SMS, email and WhatsApp land in one shared queue. Threads that have waited too long rise to the top, and Lydia drafts a reply for you to approve.',['AI draft on every thread, sent only when you approve','Oldest wait first, so nobody is forgotten','Full customer history beside the conversation']],
+ ['Pipeline & Quotes','pipeline','Turn a chat into an agreed scope','Drag a deal from new enquiry to deposit paid. Send a quote with instalments and let the customer approve it from their phone.',['Boards per service line, e.g. Bridal & Events','Quotes become jobs on acceptance','Every stage change is one drag']],
+ ['Jobs & Schedule','schedule','Dispatch the work, then just open My Day','One-time and recurring jobs, a team schedule for the dispatcher, and a field "My Day" list for each person.',['Recurring visits with the next date in view','Colour-coded team schedule by the week','Customers self-book from a booking page']],
+ ['Invoices & Portal','invoice','Issue it, get paid, show the customer','Issue invoices, record verified payments, and give customers a portal where they see their quotes, visits and invoices.',['Balance updates on verified payment','Send a notification by email or SMS','Customers sign in with a one-time code']],
+ ['Lydia AI','brain','An AI grounded in your real business','Business Brain reads your site for services, prices and policies — you approve every fact — then AI Work drafts and prioritises from real history.',['Approved knowledge, never guesses','Drafts and next steps you can edit','External actions only where you allow them']],
+ ['Automations & Inspector','inspector','Follow-ups that run, and show their work','Build a workflow once and it runs day and night. The Execution Inspector shows exactly what each run did.',['Input, mapping, branch and output per run','See why a run took the path it took','Catch and replay a failed run']],
+];
+const tabs=$('#tabs'),panel=$('#panel'),showimg=$('#showimg'),prog=$('#prog');
+FEAT.forEach(([name,img,h,p,bul],i)=>{
+  const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.textContent=name;b.addEventListener('click',()=>{go(i,true);});tabs.appendChild(b);
+  const s=document.createElement('div');s.className='slide';s.innerHTML=`<div class="frame"><div class="bar"><i></i><i></i><i></i><b>${name}</b></div><img src="img/${img}.webp" alt="${h} — ${name} in Lydia" loading="lazy"></div>`;showimg.appendChild(s);
+  const pi=document.createElement('i');pi.innerHTML='<b></b>';prog.appendChild(pi);
+});
+const tabBtns=[...tabs.children],slides=[...showimg.children],progs=[...prog.children];
+let fi=-1,timer=null,paused=false;
+function render(i){const[name,img,h,p,bul]=FEAT[i];panel.innerHTML=`<div class="k">${name}</div><h3>${h}</h3><p>${p}</p><ul>${bul.map(x=>`<li><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${x}</li>`).join('')}</ul>`;
+  tabBtns.forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttribute('aria-selected',String(j===i));});
+  slides.forEach((s,j)=>s.classList.toggle('on',j===i));
+  progs.forEach((pz,j)=>{pz.classList.remove('on');if(j<i)pz.querySelector('b').style.width='100%';else if(j>i)pz.querySelector('b').style.width='0';});
+}
+function go(i,user){if(i===fi)return;fi=i;render(i);if(user){paused=true;clearInterval(timer);timer=null;}if(!reduce&&!paused){progs[i].offsetWidth;progs[i].classList.add('on');}}
+function auto(){if(reduce)return;timer=setInterval(()=>{if(!paused)go((fi+1)%FEAT.length);},6000);}
+go(0);
+const showIo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!timer&&!paused){progs[fi].classList.add('on');auto();}}),{threshold:.3});
+showIo.observe($('#show .stage'));
+
+/* ---- day stepper ---- */
+const STEPS=[
+ ['Shared Inbox','inbox-ai','Oluchi messages at 11pm','She asks if she can pay for her bridal package in two parts. Lydia flags the thread and drafts a reply for Amara to approve in the morning.','Oluchi has an answer before she shops around.'],
+ ['Pipeline & Quotes','pipeline','A quote she approves from her phone','The enquiry becomes a deal in Bridal & Events. Amara sends a two-instalment quote; Oluchi approves it in a tap.','The deal moves itself to Quote sent → Deposit paid.'],
+ ['Jobs','jobs-detail','The quote becomes a job','On acceptance Lydia creates the job — a trial, the wedding day, and a recurring touch-up — each with its next visit.','Nothing is re-typed; the work is scheduled.'],
+ ['Schedule & My Day','schedule','The dispatcher assigns, the stylist opens My Day','Amara drops the trial onto Kemi in the team schedule. Kemi sees only her visits for the day.','Field and office stay in sync automatically.'],
+ ['Invoices & Portal','invoice','Issue the invoice, she sees it in her portal','Amara issues the second instalment. The balance updates on a verified payment, and Oluchi sees everything in her portal.','No chasing — the balance is visible to both sides.'],
+ ['Automations & Inspector','inspector','Follow-ups that show their work','A workflow sends the deposit reminder. The Execution Inspector shows the input, mapping, branch and output of the run.','You trust automations because you can audit them.'],
+];
+$('#steps').innerHTML=STEPS.map(([tag,img,h,p,chg],i)=>`<div class="step reveal"><div class="n">${i+1}</div><div><div class="tag">${tag}</div><h3>${h}</h3><p>${p}</p><p style="color:var(--mint)">→ ${chg}</p></div><div class="frame"><div class="bar"><i></i><i></i><i></i><b>${tag}</b></div><img src="img/${img}.webp" alt="${h}" loading="lazy"></div></div>`).join('');
+$$('#steps .reveal').forEach(el=>io.observe(el));
+
+/* ---- flywheel ---- */
+const FW=[['Customer activity','Every visit, message and payment is captured.'],['Conversations','One inbox turns activity into a fast reply.'],['Business data','Contacts, deals, jobs and invoices become one record.'],['AI understanding','Lydia reads that record and spots who needs you.'],['Recommendations','Clear next steps, each with its reason.'],['Automations','Reminders, follow-ups and invoices run on their own.'],['More revenue','More bookings and repeat customers. Then it turns again.']];
+const fwSteps=$('#fwSteps'),spin=$('#spin'),arc=$('#arc');
+FW.forEach(([t,d],i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=`<b>${String(i+1).padStart(2,'0')} · ${t}</b><span>${d}</span>`;b.addEventListener('click',()=>setFw(i,true));fwSteps.appendChild(b);});
+const fwBtns=[...fwSteps.children];
+const nodes=FW.map(([t])=>{const n=document.createElement('span');n.className='node';n.textContent=t;spin.appendChild(n);return n;});
+function place(){nodes.forEach((n,i)=>{const a=(i/FW.length)*Math.PI*2-Math.PI/2;const R=46;n.style.left=(50+R*Math.cos(a))+'%';n.style.top=(50+R*Math.sin(a))+'%';});}
+let fwi=-1,fwTimer=null,fwPaused=false;
+function setFw(i,user){if(i===fwi)return;fwi=i;fwBtns.forEach((b,j)=>b.classList.toggle('on',j===i));nodes.forEach((n,j)=>n.classList.toggle('on',j===i));arc.setAttribute('stroke-dasharray',`${((i+1)/FW.length*100).toFixed(1)} 100`);if(user){fwPaused=true;clearInterval(fwTimer);}}
+place();setFw(0);
+const fwIo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!fwTimer&&!fwPaused&&!reduce){fwTimer=setInterval(()=>{if(!fwPaused)setFw((fwi+1)%FW.length);},2200);}}),{threshold:.4});
+fwIo.observe($('#wheel'));
+
+/* ---- tour chapters ---- */
+const CH=[[0,'Dashboard'],[5,'Shared Inbox'],[11,'Pipeline'],[17,'Team schedule'],[24,'Campaigns'],[30,'AI Work'],[36,'Business Brain'],[42,'Analytics & payments']];
+const vid=$('#vid');
+$('#chaps').innerHTML=CH.map(([t,n])=>`<li><button type="button" data-t="${t}">${n}</button></li>`).join('');
+$$('#chaps button').forEach(b=>b.addEventListener('click',()=>{vid.currentTime=+b.dataset.t;vid.play().catch(()=>{});}));
+
+/* ---- pricing lists ---- */
+const tick='<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
+$('#starter').innerHTML=['3 team members','2,000 contacts','3 pipelines','5 automations','Email & SMS campaigns','Shared inbox','500 AI requests a month'].map(x=>`<li>${tick}${x}</li>`).join('');
+$('#pro').innerHTML=['Unlimited team members','Unlimited contacts','Unlimited pipelines','Unlimited automations','3,000 AI requests a month','Remove Lydia branding','Priority support'].map(x=>`<li>${tick}${x}</li>`).join('');
+})();
+</script>
