@@ -1,0 +1,221 @@
+WEBVTT
+
+00:00:01.081 --> 00:00:01.913
+This is Lydia.
+
+00:00:01.913 --> 00:00:02.627
+Meet Amara.
+
+00:00:02.627 --> 00:00:05.840
+She runs Bloom and Company, a beauty studio in Lagos.
+
+00:00:05.840 --> 00:00:10.123
+Every morning she opens Lydia and her dashboard tells her what matters.
+
+00:00:10.123 --> 00:00:14.704
+One customer has been waiting on a reply, so Lydia puts her at the very top.
+
+00:00:14.704 --> 00:00:22.081
+Below that, she can see where this week's new customers came from, how many deals are open, and what her pipeline is worth.
+
+00:00:22.081 --> 00:00:24.461
+No digging through five different apps.
+
+00:00:27.108 --> 00:00:28.915
+Contacts is her client book.
+
+00:00:28.915 --> 00:00:33.046
+Every customer is here with their phone, email, tags and notes.
+
+00:00:33.046 --> 00:00:36.079
+She searches for Oluchi and opens her profile.
+
+00:00:36.079 --> 00:00:41.372
+Every message, booking, payment and form she ever filled in sits on one timeline.
+
+00:00:41.372 --> 00:00:47.698
+Amara adds a quick internal note, so anyone on her team knows the context next time Oluchi calls.
+
+00:00:50.349 --> 00:00:53.796
+Conversations brings SMS and email into one live inbox.
+
+00:00:53.796 --> 00:00:59.062
+Unread threads are flagged, and the ones that have waited too long rise to the top.
+
+00:00:59.062 --> 00:01:03.639
+Oluchi wants to know if she can pay for her bridal package in two parts.
+
+00:01:03.639 --> 00:01:06.648
+Amara answers right away and confirms the plan.
+
+00:01:06.648 --> 00:01:11.789
+Fast replies win customers, and Lydia makes sure nobody slips through the cracks.
+
+00:01:14.438 --> 00:01:20.099
+The pipeline shows every opportunity, from first enquiry to deposit paid, with its value.
+
+00:01:20.099 --> 00:01:24.361
+When a client accepts a quote, Amara simply drags the card across.
+
+00:01:24.361 --> 00:01:28.433
+Lydia updates the stage, the totals and the forecast instantly.
+
+00:01:28.433 --> 00:01:32.568
+At a glance she knows how much money is on the table this month.
+
+00:01:34.709 --> 00:01:38.108
+Campaigns let her reach her customers by email or SMS.
+
+00:01:38.108 --> 00:01:45.977
+She starts a new one for her Black Friday glow up week, writes the subject and message, and chooses exactly who receives it.
+
+00:01:45.977 --> 00:01:51.895
+Every campaign she has sent keeps its results: who opened, who clicked, and who unsubscribed.
+
+00:01:51.895 --> 00:01:54.099
+So next time she knows what works.
+
+00:01:57.034 --> 00:01:59.581
+This is where Lydia starts working for her.
+
+00:01:59.581 --> 00:02:02.069
+Automations are built from simple blocks.
+
+00:02:02.069 --> 00:02:09.000
+When a new lead arrives, Lydia texts them, tags them, waits two days, emails an offer, and reminds the team to call.
+
+00:02:09.000 --> 00:02:11.073
+Amara builds a new one in seconds.
+
+00:02:11.073 --> 00:02:17.234
+When someone fills in her bridal enquiry form, Lydia sends a welcome text and creates a follow-up task.
+
+00:02:17.234 --> 00:02:19.604
+Set it once, and it runs day and night.
+
+00:02:23.003 --> 00:02:25.823
+AI Work is Lydia thinking about her business.
+
+00:02:25.823 --> 00:02:32.467
+It escalates what needs a human, like a client unhappy with her nails, or a reminder that keeps bouncing.
+
+00:02:32.467 --> 00:02:37.858
+And it recommends next steps, each with the reason behind it and how confident it is.
+
+00:02:37.858 --> 00:02:40.240
+Send Precious the split payment link.
+
+00:02:40.240 --> 00:02:41.493
+Tag Aisha as a VIP.
+
+00:02:41.493 --> 00:02:44.001
+Amara accepts the ones she agrees with.
+
+00:02:44.001 --> 00:02:45.066
+The AI suggests.
+
+00:02:45.066 --> 00:02:46.383
+She stays in charge.
+
+00:02:49.344 --> 00:02:51.707
+Tasks keep the whole team on track.
+
+00:02:51.707 --> 00:02:55.015
+Some are created by automations, others by hand.
+
+00:02:55.015 --> 00:03:01.633
+Amara adds a task to confirm the bridal party headcount, then ticks off one that is already done.
+
+00:03:01.633 --> 00:03:04.064
+Overdue work is impossible to miss.
+
+00:03:06.506 --> 00:03:09.504
+The calendar shows who is coming in, day by day.
+
+00:03:09.504 --> 00:03:18.185
+Amara sets up what people can book, like knotless braids, a signature facial or a bridal trial, each with its own length and availability.
+
+00:03:18.185 --> 00:03:21.996
+Then she shares her booking link, and customers do the rest.
+
+00:03:24.538 --> 00:03:26.469
+Here is what her customer sees.
+
+00:03:26.469 --> 00:03:28.836
+A simple booking page with her brand.
+
+00:03:28.836 --> 00:03:33.071
+The customer picks a day, chooses a time, and enters their details.
+
+00:03:33.071 --> 00:03:33.757
+That's it.
+
+00:03:33.757 --> 00:03:41.668
+The appointment lands in Amara's calendar, the customer gets a confirmation, and any automation she has set up starts running.
+
+00:03:44.318 --> 00:03:48.295
+Forms capture new enquiries from her website or Instagram bio.
+
+00:03:48.295 --> 00:03:51.246
+She builds them in Lydia and shares the link.
+
+00:03:51.246 --> 00:04:00.678
+When a bride to be fills in the bridal enquiry form, she instantly becomes a contact, with her details and message saved, ready for the next step.
+
+00:04:03.286 --> 00:04:06.216
+Get paid shows every payment request she has sent.
+
+00:04:06.216 --> 00:04:10.377
+What has been collected, what is still outstanding, and who paid when.
+
+00:04:10.377 --> 00:04:16.766
+She sends payment links through her own gateway and keeps her money flow in the same place as her customers.
+
+00:04:19.352 --> 00:04:22.074
+Analytics gives her the numbers that matter.
+
+00:04:22.074 --> 00:04:30.117
+New contacts this week and this month, replies received, campaign open and click rates, pipeline value and upcoming appointments.
+
+00:04:30.117 --> 00:04:31.602
+No spreadsheets needed.
+
+00:04:34.269 --> 00:04:41.145
+In settings, Amara manages her business details, her team and their roles, and her sending providers.
+
+00:04:41.145 --> 00:04:47.818
+Lydia works with the email, SMS and AI providers she already uses, or she can simply use Lydia's.
+
+00:04:47.818 --> 00:04:51.699
+Her tags, segments, API keys and webhooks live here too.
+
+00:04:53.885 --> 00:04:56.885
+And if you run an agency, Lydia grows with you.
+
+00:04:56.885 --> 00:05:04.867
+From the agency view, Amara manages separate workspaces for each business she supports, like a spa, a barber shop and a gym.
+
+00:05:04.867 --> 00:05:06.591
+Each one is fully private.
+
+00:05:06.591 --> 00:05:09.975
+Creating a new client workspace takes a few seconds.
+
+00:05:12.401 --> 00:05:13.469
+Plans are simple.
+
+00:05:13.469 --> 00:05:16.676
+Starter for growing shops, and Pro with no limits.
+
+00:05:16.676 --> 00:05:19.821
+Every plan starts with a fourteen day free trial.
+
+00:05:22.469 --> 00:05:23.286
+That's Lydia.
+
+00:05:23.286 --> 00:05:29.635
+Your messages, bookings, payments and follow-ups in one place, working for you even after you close.
+
+00:05:29.635 --> 00:05:34.539
+Start your free trial today, and never lose a customer to a slow reply again.
+
