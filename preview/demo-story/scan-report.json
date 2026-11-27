@@ -1,0 +1,232 @@
+[
+  {
+    "dev": "desktop",
+    "name": "01-dashboard",
+    "url": "/",
+    "leaks": [],
+    "weak": [
+      "No campaign has been sent yet. Its delivery, opens and clicks will sh"
+    ]
+  },
+  {
+    "dev": "desktop",
+    "name": "02-action-center",
+    "url": "/action-center",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "03-inbox-oluchi",
+    "url": "/conversations",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "04-contact-oluchi",
+    "url": "/contacts/e20e2f85-1d6a-4835-bad3-84592a402425",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "05-pipeline",
+    "url": "/pipeline",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "06-quote-q0001",
+    "url": "/quotes/92bd5855-d002-44e0-8d4e-b3ebc671a5ef",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "07-quotes",
+    "url": "/quotes",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "08-jobs",
+    "url": "/jobs",
+    "leaks": [],
+    "weak": [
+      "J-0006 has no visit yet. Drag it from the Unscheduled tray onto"
+    ]
+  },
+  {
+    "dev": "desktop",
+    "name": "09-job-j0001",
+    "url": "/jobs/7e9892c4-71b5-4859-8a09-51bf33e99652",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "10-schedule",
+    "url": "/calendar?view=schedule",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "11-my-day",
+    "url": "/my-day",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "12-invoices",
+    "url": "/invoices",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "13-invoice-inv0001",
+    "url": "/invoices/b1a8015c-1617-4ac5-8f4f-3b3a4093e77b",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "14-help-desk",
+    "url": "/tickets",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "15-ticket",
+    "url": "/tickets/61e9c8ba-547f-4a53-a64e-aceeb2cbff6e",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "16-automation",
+    "url": "/automations/16d78f14-af41-4609-8c32-fb1298e819a4",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "17-automation-executions",
+    "url": "/automations/16d78f14-af41-4609-8c32-fb1298e819a4",
+    "leaks": [
+      "584c485d-0599-4eec-94c2-428bd8a06c94"
+    ],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "18-ai-work",
+    "url": "/ai-work",
+    "leaks": [],
+    "weak": [
+      "m her reading of events as they happen: failed sends, replies, payments, deal moves.",
+      "Nothing needs you today: no one waiting on a reply, no de"
+    ]
+  },
+  {
+    "dev": "desktop",
+    "name": "19-brain",
+    "url": "/brain",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "20-campaigns",
+    "url": "/campaigns",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "21-analytics",
+    "url": "/analytics",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "22-contacts",
+    "url": "/contacts",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "23-agency",
+    "url": "/agency",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "desktop",
+    "name": "24-settings",
+    "url": "/settings",
+    "leaks": [],
+    "weak": [
+      "Renewal date unavailable"
+    ]
+  },
+  {
+    "dev": "phone",
+    "name": "01-dashboard",
+    "url": "/",
+    "leaks": [],
+    "weak": [
+      "No campaign has been sent yet. Its delivery, opens and clicks will sh"
+    ]
+  },
+  {
+    "dev": "phone",
+    "name": "03-inbox-oluchi",
+    "url": "/conversations",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "phone",
+    "name": "09-job-j0001",
+    "url": "/jobs/7e9892c4-71b5-4859-8a09-51bf33e99652",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "phone",
+    "name": "11-my-day",
+    "url": "/my-day",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "phone",
+    "name": "13-invoice-inv0001",
+    "url": "/invoices/b1a8015c-1617-4ac5-8f4f-3b3a4093e77b",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "phone",
+    "name": "10-schedule",
+    "url": "/calendar?view=schedule",
+    "leaks": [],
+    "weak": []
+  },
+  {
+    "dev": "phone",
+    "name": "02-action-center",
+    "url": "/action-center",
+    "leaks": [],
+    "weak": []
+  }
+]
