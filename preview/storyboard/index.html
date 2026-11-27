@@ -1,0 +1,308 @@
+<title>Lydia Homepage Storyboard</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap">
+<style>
+/* Layout: a review document. One reading column; each scene is a row of text beside the real screens it uses. */
+:root{
+  --bg:#f6f7fb; --paper:#ffffff; --ink:#141a2b; --ink-2:#4a5470; --ink-3:#7b849c; --line:#e2e6ef;
+  --blue:#1e5fd8; --blue-soft:#e8effd; --amber:#9a5b00; --amber-soft:#fff4e0; --green:#13795b; --green-soft:#e3f5ee;
+  --display:"Sora",ui-sans-serif,system-ui,sans-serif; --body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b0f1a; --paper:#121828; --ink:#eef1f8; --ink-2:#aab3c8; --ink-3:#7d869c; --line:#252d42;
+  --blue:#7ea2ff; --blue-soft:#18233f; --amber:#f2b55c; --amber-soft:#2b2110; --green:#5ad1a6; --green-soft:#10281f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b0f1a; --paper:#121828; --ink:#eef1f8; --ink-2:#aab3c8; --ink-3:#7d869c; --line:#252d42;
+  --blue:#7ea2ff; --blue-soft:#18233f; --amber:#f2b55c; --amber-soft:#2b2110; --green:#5ad1a6; --green-soft:#10281f; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15.5px/1.65 var(--body);margin:0}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 80px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.015em;text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.12}
+h2{font-size:24px;margin:56px 0 6px}
+h3{font-size:17px;line-height:1.3}
+p{margin:0}
+.lede{color:var(--ink-2);max-width:68ch;margin-top:12px}
+.status{display:inline-flex;gap:8px;align-items:center;font:600 12px var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border-radius:999px;padding:5px 12px;margin-bottom:16px}
+.sub{color:var(--ink-3);font-size:14px;margin-bottom:18px}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:22px}
+.facts div{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.facts b{display:block;font:700 20px var(--display);font-variant-numeric:tabular-nums}
+.facts span{font-size:13px;color:var(--ink-2)}
+.story{margin-top:18px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.story ol{margin:8px 0 0;padding-left:20px;color:var(--ink-2)}
+.story li{margin:3px 0}
+.scene{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;padding:22px 0;border-top:1px solid var(--line)}
+.scene:first-of-type{border-top:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
+.tag{font:600 11.5px var(--body);border-radius:6px;padding:3px 8px;background:var(--blue-soft);color:var(--blue)}
+.tag.file{background:transparent;border:1px solid var(--line);color:var(--ink-2);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:500}
+dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;margin:10px 0 0;font-size:14.5px}
+dt{color:var(--ink-3);font-weight:500}
+dd{margin:0;color:var(--ink)}
+.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-content:start}
+.shots.one{grid-template-columns:minmax(0,1fr)}
+.shots button{all:unset;cursor:zoom-in;display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper);position:relative}
+.shots button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.shots img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top left}
+.shots img.ph{aspect-ratio:9/16;object-fit:cover}
+.shots .cap{position:absolute;left:6px;bottom:6px;font:600 11px var(--body);background:rgba(20,26,43,.78);color:#fff;border-radius:5px;padding:2px 7px}
+.note{margin-top:10px;font-size:13.5px;color:var(--amber);background:var(--amber-soft);border-radius:8px;padding:8px 11px}
+.ok{margin-top:10px;font-size:13.5px;color:var(--green);background:var(--green-soft);border-radius:8px;padding:8px 11px}
+.tl{width:100%;border-collapse:collapse;font-size:14.5px;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tlwrap{overflow-x:auto;margin-top:10px}
+.tl th{text-align:left;font:600 12px var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tl td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
+.tl tr:last-child td{border-bottom:0}
+.tl td:first-child{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--blue);font-weight:600}
+.tl .say{color:var(--ink-2);font-style:italic;margin-top:6px}
+.tl .thumbs{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.tl .thumbs button{all:unset;cursor:zoom-in;width:110px;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tl .thumbs img{width:110px;aspect-ratio:16/10;object-fit:cover;object-position:top left;display:block}
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.rules div{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--ink-2)}
+.rules b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+.dec{counter-reset:d;display:grid;gap:10px;margin-top:12px}
+.dec div{counter-increment:d;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px 14px 52px;position:relative}
+.dec div::before{content:counter(d);position:absolute;left:16px;top:14px;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font:700 13px/24px var(--display);text-align:center}
+.dec b{display:block}
+.dec p{color:var(--ink-2);font-size:14.5px;margin-top:3px}
+dialog{border:0;padding:0;background:transparent;max-width:min(1400px,96vw);max-height:94vh}
+dialog::backdrop{background:rgba(8,10,18,.82)}
+dialog img{max-width:min(1400px,96vw);max-height:90vh;display:block;border-radius:8px}
+dialog p{color:#fff;font-size:13px;margin-top:8px;text-align:center}
+@media (max-width:760px){
+  .scene{grid-template-columns:minmax(0,1fr)}
+  .facts,.rules{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:420px){.facts,.rules{grid-template-columns:minmax(0,1fr)}}
+</style>
+
+<div class="wrap">
+  <span class="status">For approval · nothing has been built</span>
+  <h1>Lydia homepage and tour storyboard</h1>
+  <p class="lede">Every scene below uses a real screen captured from the current app, seeded with one coherent customer story. The homepage plan maps onto the existing site code in <code>website/src</code>. The tour plan fits 7 minutes 20 seconds with continuous narration. Approve or change it, then I build a motion prototype of three scenes.</p>
+
+  <div class="facts">
+    <div><b>31</b><span>real screens captured (24 desktop, 7 phone)</span></div>
+    <div><b>1</b><span>customer story from enquiry to paid deposit</span></div>
+    <div><b>0</b><span>test names, localhost links or tokens on screen</span></div>
+    <div><b>7:20</b><span>target tour length, under your 8-minute cap</span></div>
+  </div>
+
+  <div class="story">
+    <h3>The story every scene follows</h3>
+    <ol>
+      <li>Oluchi Afolabi asks Bloom &amp; Co. about bridal glam for her wedding on Saturday 19 December, and whether she can pay in two parts.</li>
+      <li>Amara sends quote Q-0001 ($1,280). Oluchi approves it on WhatsApp with a 50% deposit.</li>
+      <li>The quote becomes job J-0001 at her home in Lekki: trial tomorrow, the wedding morning with Kemi and Tobi, then four monthly facials.</li>
+      <li>Deposit invoice INV-0001 ($640) is issued, her transfer is recorded and verified.</li>
+      <li>An automation tags her and creates the "book the trial" task, and its run shows each step.</li>
+      <li>She opens a help desk ticket to move the trial to Saturday morning.</li>
+    </ol>
+  </div>
+
+  <h2>Part 1 · Homepage</h2>
+  <p class="sub">Section order top to bottom. Each one names the file it changes, the motion, and the reference it borrows from.</p>
+
+  <div class="scene">
+    <div>
+      <h3>Navigation with a Features menu</h3>
+      <div class="meta"><span class="tag file">Nav.jsx</span><span class="tag">Reference: Attio, Linear</span></div>
+      <dl>
+        <dt>Groups</dt><dd>Customers · Sales · Operations · Lydia AI · Payments, matching the app's own sidebar.</dd>
+        <dt>Motion</dt><dd>Panel opens on hover or focus, closes on Escape. Tap to expand on phones.</dd>
+        <dt>Links</dt><dd>Each item jumps to its chapter in the journey below, plus Tour, Pricing, Log in, Start free.</dd>
+      </dl>
+    </div>
+    <div class="shots one"><button data-src="screens/desktop/04-contact-oluchi.webp" data-cap="The app's sidebar groups the menu follows"><img src="screens/desktop/04-contact-oluchi.webp" alt="Lydia sidebar with Customers, Sales, Operations, Lydia AI, Insights, Payments, Agency" loading="lazy"><span class="cap">Sidebar the menu mirrors</span></button></div>
+  </div>
+
+  <div class="scene">
+    <div>
+      <h3>Hero: a moving gallery of real screens</h3>
+      <div class="meta"><span class="tag file">Hero.jsx</span><span class="tag">Reference: Grail, DeepBook</span></div>
+      <dl>
+        <dt>Headline</dt><dd>Two lines, options in Decisions below.</dd>
+        <dt>Visual</dt><dd>The dashboard in front; the quote, job, schedule, invoice and inbox screens behind it at different depths, slowly drifting.</dd>
+        <dt>Scroll</dt><dd>The rear screens spread apart while the inbox screen comes forward and becomes chapter 1 of the journey. Reverses cleanly.</dd>
+        <dt>Phone</dt><dd>No 3D. A stack of three phone screens that slides on its own; text first.</dd>
+      </dl>
+      <p class="ok">Extends the scroll tilt that Hero.jsx already has; no new library.</p>
+    </div>
+    <div class="shots">
+      <button data-src="screens/desktop/01-dashboard.webp" data-cap="Front: dashboard"><img src="screens/desktop/01-dashboard.webp" alt="Dashboard" loading="lazy"><span class="cap">Front</span></button>
+      <button data-src="screens/desktop/10-schedule.webp" data-cap="Behind: team schedule"><img src="screens/desktop/10-schedule.webp" alt="Team schedule" loading="lazy"><span class="cap">Behind</span></button>
+      <button data-src="screens/desktop/06-quote-q0001.webp" data-cap="Behind: quote Q-0001"><img src="screens/desktop/06-quote-q0001.webp" alt="Quote Q-0001" loading="lazy"><span class="cap">Behind</span></button>
+      <button data-src="screens/desktop/13-invoice-inv0001.webp" data-cap="Behind: invoice INV-0001"><img src="screens/desktop/13-invoice-inv0001.webp" alt="Invoice INV-0001" loading="lazy"><span class="cap">Behind</span></button>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div>
+      <h3>Who it's for</h3>
+      <div class="meta"><span class="tag file">Marquee.jsx</span><span class="tag">Reference: Housecall Pro, Jobber</span></div>
+      <dl>
+        <dt>Content</dt><dd>Beauty studios, cleaning crews, home repair, clinics, fitness, tutors. Each is a button that swaps one line of copy to that trade.</dd>
+        <dt>Proof</dt><dd>No reviews, logos or customer counts until real ones exist. The current "Numbers" band stays hidden.</dd>
+      </dl>
+    </div>
+    <div class="shots one"><button data-src="screens/desktop/22-contacts.webp" data-cap="Contacts: the studio's client book"><img src="screens/desktop/22-contacts.webp" alt="Contacts list" loading="lazy"><span class="cap">Reference screen</span></button></div>
+  </div>
+
+  <div class="scene">
+    <div>
+      <h3>The journey, one chapter at a time</h3>
+      <div class="meta"><span class="tag file">Story.jsx</span><span class="tag">Reference: MECHA, Attio, Linear</span></div>
+      <dl>
+        <dt>Layout</dt><dd>A chapter index stays on the left and highlights as you scroll; the screen on the right changes. Story.jsx already pins and switches scenes.</dd>
+        <dt>Chapters</dt><dd>Enquiry · Customer · Quote · Job · Schedule · Invoice · Follow-up.</dd>
+        <dt>Screens</dt><dd>Large, readable crops of the part that matters, never a shrunken full app.</dd>
+        <dt>Phone</dt><dd>No pinning: chapters stack, each with its phone screen.</dd>
+      </dl>
+    </div>
+    <div class="shots">
+      <button data-src="screens/desktop/03-inbox-oluchi.webp" data-cap="1 Enquiry: Oluchi's conversation"><img src="screens/desktop/03-inbox-oluchi.webp" alt="Inbox" loading="lazy"><span class="cap">1 Enquiry</span></button>
+      <button data-src="screens/desktop/04-contact-oluchi.webp" data-cap="2 Customer: activity timeline"><img src="screens/desktop/04-contact-oluchi.webp" alt="Contact timeline" loading="lazy"><span class="cap">2 Customer</span></button>
+      <button data-src="screens/desktop/06-quote-q0001.webp" data-cap="3 Quote: approved on WhatsApp, lifecycle from draft to paid"><img src="screens/desktop/06-quote-q0001.webp" alt="Quote" loading="lazy"><span class="cap">3 Quote</span></button>
+      <button data-src="screens/desktop/09-job-j0001.webp" data-cap="4 Job: trial, wedding morning, monthly facials"><img src="screens/desktop/09-job-j0001.webp" alt="Job" loading="lazy"><span class="cap">4 Job</span></button>
+      <button data-src="screens/desktop/10-schedule.webp" data-cap="5 Schedule: team week"><img src="screens/desktop/10-schedule.webp" alt="Schedule" loading="lazy"><span class="cap">5 Schedule</span></button>
+      <button data-src="screens/desktop/13-invoice-inv0001.webp" data-cap="6 Invoice: transfer recorded and verified"><img src="screens/desktop/13-invoice-inv0001.webp" alt="Invoice" loading="lazy"><span class="cap">6 Invoice</span></button>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div>
+      <h3>Everything that needs a person</h3>
+      <div class="meta"><span class="tag file">new section</span><span class="tag">Reference: Jobber</span></div>
+      <dl>
+        <dt>Content</dt><dd>Action Center's real list (overdue invoice, quote expiring Monday, a job with nothing scheduled) beside Oluchi's help desk ticket.</dd>
+        <dt>Motion</dt><dd>Items arrive one by one as the section enters; each opens its record.</dd>
+      </dl>
+    </div>
+    <div class="shots">
+      <button data-src="screens/desktop/02-action-center.webp" data-cap="Action Center"><img src="screens/desktop/02-action-center.webp" alt="Action Center" loading="lazy"><span class="cap">Action Center</span></button>
+      <button data-src="screens/desktop/15-ticket.webp" data-cap="Help desk ticket from Oluchi"><img src="screens/desktop/15-ticket.webp" alt="Ticket" loading="lazy"><span class="cap">Help desk</span></button>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div>
+      <h3>Automations you can check</h3>
+      <div class="meta"><span class="tag file">Flywheel.jsx → replaced</span><span class="tag">Reference: Cyera (interaction)</span></div>
+      <dl>
+        <dt>Content</dt><dd>The workflow on its canvas, then its real run for Oluchi: trigger, Add tag, Create a task, each marked Succeeded.</dd>
+        <dt>Interaction</dt><dd>Tap or hover a step to see what it received and what it produced. Plain list for keyboard users.</dd>
+        <dt>Flywheel</dt><dd>Removed, or kept as a short closing graphic. Your call.</dd>
+      </dl>
+      <p class="note">Crop the run ID shown under the customer name in the Executions screen.</p>
+    </div>
+    <div class="shots">
+      <button data-src="screens/desktop/16-automation.webp" data-cap="Workflow canvas"><img src="screens/desktop/16-automation.webp" alt="Automation canvas" loading="lazy"><span class="cap">Canvas</span></button>
+      <button data-src="screens/desktop/17-automation-executions.webp" data-cap="Execution history: Oluchi's run"><img src="screens/desktop/17-automation-executions.webp" alt="Executions" loading="lazy"><span class="cap">Run</span></button>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div>
+      <h3>Lydia AI that knows the business</h3>
+      <div class="meta"><span class="tag file">new section</span></div>
+      <dl>
+        <dt>Content</dt><dd>Business Brain with the studio's approved services, prices, hours and policies, and the dashboard's AI card with suggestions waiting for approval.</dd>
+        <dt>Message</dt><dd>AI drafts and suggests; nothing is sent until a person approves it.</dd>
+      </dl>
+      <p class="note">AI Work's top card currently reads "Nothing needs you today". AI drafts need an AI provider key here (see Decisions).</p>
+    </div>
+    <div class="shots">
+      <button data-src="screens/desktop/19-brain.webp" data-cap="Business Brain: 10 approved facts"><img src="screens/desktop/19-brain.webp" alt="Business Brain" loading="lazy"><span class="cap">Business Brain</span></button>
+      <button data-src="screens/desktop/01-dashboard.webp" data-cap="Dashboard AI card: suggestions and escalations"><img src="screens/desktop/01-dashboard.webp" alt="Dashboard" loading="lazy"><span class="cap">AI card</span></button>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div>
+      <h3>In the field, on the phone</h3>
+      <div class="meta"><span class="tag file">Devices.jsx + Mobile.jsx → merged</span></div>
+      <dl>
+        <dt>Content</dt><dd>My Day for the person doing the work, the job with directions and access notes, and the paid invoice.</dd>
+        <dt>Motion</dt><dd>Phones move at slightly different speeds while scrolling; static with reduced motion.</dd>
+      </dl>
+    </div>
+    <div class="shots">
+      <button data-src="screens/phone/11-my-day.webp" data-cap="My Day (phone)"><img class="ph" src="screens/phone/11-my-day.webp" alt="My Day on a phone" loading="lazy"><span class="cap">My Day</span></button>
+      <button data-src="screens/phone/09-job-j0001.webp" data-cap="Job J-0001 (phone)"><img class="ph" src="screens/phone/09-job-j0001.webp" alt="Job on a phone" loading="lazy"><span class="cap">Job</span></button>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div>
+      <h3>Tour, pricing, FAQ, final call to action</h3>
+      <div class="meta"><span class="tag file">ProductPage.jsx · tour.js · Pricing.jsx · FAQ.jsx · FinalCTA.jsx</span></div>
+      <dl>
+        <dt>Tour</dt><dd>The new 7:20 video with clickable chapters and captions, linked from the hero and the menu.</dd>
+        <dt>Pricing</dt><dd>Layout kept; plan contents need confirming (Decisions).</dd>
+        <dt>Rest</dt><dd>FAQ, final call to action, footer and legal pages unchanged.</dd>
+      </dl>
+    </div>
+    <div class="shots one"><button data-src="screens/desktop/21-analytics.webp" data-cap="Analytics: What Lydia sees"><img src="screens/desktop/21-analytics.webp" alt="Analytics" loading="lazy"><span class="cap">Used in the tour close</span></button></div>
+  </div>
+
+  <h2>Part 2 · Narrated tour, 7:20</h2>
+  <p class="sub">Each row is one chapter. The quoted lines are draft narration to show tone; the full script comes after approval.</p>
+
+  <div class="rules">
+    <div><b>No silent gaps</b>Footage is cut to the narration. The old tour had 16 gaps of 2–3.5 s at every chapter change; none allowed here.</div>
+    <div><b>No leaks</b>Sign-in happens off camera. Every frame is scanned for emails, links, IDs and warnings before you see it.</div>
+    <div><b>Zoom with purpose</b>Zoom into the field being discussed, then back out for context. No wandering cursor.</div>
+    <div><b>Captions and chapters</b>Captions file and chapter times regenerated from the final edit.</div>
+  </div>
+
+  <div class="tlwrap"><table class="tl">
+    <thead><tr><th>Time</th><th>Chapter and what's shown</th></tr></thead>
+    <tbody id="tour"></tbody>
+  </table></div>
+
+  <h2>Part 3 · Decisions I need from you</h2>
+  <div class="dec">
+    <div><b>Headline</b><p>Pick one or write your own: "From first message to paid invoice." · "Every customer, job and payment in one place." · "Run your service business without the scramble."</p></div>
+    <div><b>Narration voice</b><p>AI voice (the repo's script uses a text-to-speech model; its model files may need one more site allowed) or your own voice reading the script.</p></div>
+    <div><b>Customer portal view</b><p>Customers sign in with a code sent by email or WhatsApp, which can't be delivered here. Options: show the staff side only; or let me create a demo portal sign-in directly in the local demo database to film what Oluchi sees.</p></div>
+    <div><b>AI drafts on screen</b><p>Drafted replies need an AI provider key. Options: give a key for the demo; or show Business Brain and the AI card's suggestions only, without live drafting.</p></div>
+    <div><b>Pricing</b><p>Which plan includes Jobs, Invoices and the Customer Portal, and are $49 / $99 still correct?</p></div>
+    <div><b>Proof</b><p>Any real customers, quotes or numbers I may use? If not, the page launches without a proof band.</p></div>
+  </div>
+
+  <h2>Known limits in the captures</h2>
+  <div class="rules">
+    <div><b>Inbox composer warning</b>"No email provider connected" shows under Oluchi's conversation. It will be cropped; I won't fake a connected provider.</div>
+    <div><b>Run ID</b>The Executions screen shows the run's internal ID. Cropped.</div>
+    <div><b>Settings</b>Shows "Renewal date unavailable" (no billing provider). Not used.</div>
+    <div><b>In-studio visits</b>My Day says "No address on this job" for studio appointments. That's accurate; the wording stays.</div>
+  </div>
+</div>
+
+<dialog id="lb" aria-label="Screen preview"><img id="lbimg" alt=""><p id="lbcap"></p></dialog>
+
+<script>
+const TOUR = [
+  ['0:00–0:35','Morning in Lydia','Dashboard, then Action Center: the overdue invoice, the quote expiring Monday, the job with nothing scheduled. Open the overdue invoice.','It\'s Friday morning at Bloom & Co. Before anything else, Amara opens Lydia to see what needs a person today.',['01-dashboard','02-action-center']],
+  ['0:35–1:20','Customer and conversation','Oluchi\'s thread in the inbox, her activity timeline, then her help desk ticket to move the trial.','Oluchi asked about bridal glam for her wedding and whether she could pay in two parts. Her whole history sits on one timeline.',['03-inbox-oluchi','04-contact-oluchi','15-ticket']],
+  ['1:20–2:15','Quote and approval','Bridal & Events pipeline, quote Q-0001 with its lines and optional touch-up kit, approved on WhatsApp with a 50% deposit.','Amara sends one quote. Oluchi approves it on WhatsApp, and Lydia records how and when.',['05-pipeline','06-quote-q0001']],
+  ['2:15–3:25','Job and visits','Job J-0001: home address and access notes, the trial, the wedding morning with two stylists, four monthly facials. Then the Jobs list and its filters.','The approved quote becomes a job, with every visit, who\'s going and how to get in.',['09-job-j0001','08-jobs']],
+  ['3:25–4:20','Schedule and My Day','The team schedule; drag the unscheduled headshot job onto the week. Then My Day on a phone and complete a visit.','The office plans the week. Each stylist just opens My Day.',['10-schedule','11-my-day']],
+  ['4:20–5:20','Invoice, payment and portal','Invoices list, INV-0001 with the transfer recorded and verified, share the invoice and portal link.','The deposit invoice was drafted on approval. Her transfer is recorded, then verified.',['12-invoices','13-invoice-inv0001']],
+  ['5:20–6:25','Automation and Lydia AI','The workflow canvas, Oluchi\'s run step by step, then Business Brain\'s approved facts and the AI card.','When a quote is approved, this runs on its own, and you can see exactly what it did.',['16-automation','17-automation-executions','19-brain']],
+  ['6:25–7:20','Campaigns, insights and close','Campaigns, Analytics, Agency workspaces, then back to the dashboard and the call to action.','One place for every customer, job and payment. Try Lydia free for 14 days.',['20-campaigns','21-analytics','23-agency']],
+];
+const shot = (n) => `screens/${n === '11-my-day' ? 'phone' : 'desktop'}/${n}.webp`;
+document.getElementById('tour').innerHTML = TOUR.map(([t, h, what, say, shots]) => `<tr><td>${t}</td><td><b>${h}</b><div>${what}</div><div class="say">“${say}”</div><div class="thumbs">${shots.map((s) => `<button data-src="${shot(s)}" data-cap="${h}"><img src="${shot(s)}" alt="${h}" loading="lazy"></button>`).join('')}</div></td></tr>`).join('');
+const lb = document.getElementById('lb');
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-src]');
+  if (b) { document.getElementById('lbimg').src = b.dataset.src; document.getElementById('lbcap').textContent = b.dataset.cap || ''; lb.showModal(); return; }
+  if (e.target === lb || e.target.id === 'lbimg') lb.close();
+});
+</script>
